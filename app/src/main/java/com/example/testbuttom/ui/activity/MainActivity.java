@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public int getLayoutID() {
         //第一步：获取ViewPager实例
-        mViewPage = findViewById(R.id.viewpage);
+
         //初始化
 //        initViews();
 //        initData();
@@ -65,6 +65,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void initView() {
+        mViewPage = findViewById(R.id.viewpage);
         // 实例化布局
         mTabHome = findViewById(R.id.tab_home_layout);
         mTabList = findViewById(R.id.tab_list_layout);
@@ -113,6 +114,38 @@ public class MainActivity extends BaseActivity {
 
     public void initData() {
         mfragment = new ArrayList<>();
+
+    }
+
+    private void resetImgs() {
+        homebtn.setImageResource(R.mipmap.analysis_false);
+        listbtn.setImageResource(R.mipmap.edu_manage_false);
+        gwcbtn.setImageResource(R.mipmap.cash_manage_false);
+        mebtn.setImageResource(R.mipmap.my_false);
+    }
+
+    private void selectTab(int i) {
+        switch (i) {
+            case (0):
+                homebtn.setImageResource(R.mipmap.analysis_true);
+                break;
+            case (1):
+                listbtn.setImageResource(R.mipmap.edu_manage_true);
+                break;
+            case (2):
+                gwcbtn.setImageResource(R.mipmap.cash_manage_true);
+                break;
+            case (3):
+                mebtn.setImageResource(R.mipmap.my_true);
+                break;
+        }
+        // 设置当前点击的Tab对应的界面.点击后切换当前选中fragment
+        mViewPage.setCurrentItem(i);
+    }
+
+    @Override
+    public void initListener() {
+        super.initListener();
         // 将四个Fragment放入集合中
         mfragment.add(mHomeFrag);
         mfragment.add(mListFrag);
@@ -162,32 +195,7 @@ public class MainActivity extends BaseActivity {
 
             }
         });
-    }
-
-    private void resetImgs() {
-        homebtn.setImageResource(R.mipmap.analysis_false);
-        listbtn.setImageResource(R.mipmap.edu_manage_false);
-        gwcbtn.setImageResource(R.mipmap.cash_manage_false);
-        mebtn.setImageResource(R.mipmap.my_false);
-    }
-
-    private void selectTab(int i) {
-        switch (i) {
-            case (0):
-                homebtn.setImageResource(R.mipmap.analysis_true);
-                break;
-            case (1):
-                listbtn.setImageResource(R.mipmap.edu_manage_true);
-                break;
-            case (2):
-                gwcbtn.setImageResource(R.mipmap.cash_manage_true);
-                break;
-            case (3):
-                mebtn.setImageResource(R.mipmap.my_true);
-                break;
-        }
-        // 设置当前点击的Tab对应的界面.点击后切换当前选中fragment
-        mViewPage.setCurrentItem(i);
+        initEvent();
     }
 
     private void initEvent(){
