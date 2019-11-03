@@ -56,15 +56,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public int getLayoutID() {
-        //第一步：获取ViewPager实例
-
-        //初始化
-//        initViews();
-//        initData();
         return R.layout.activity_main;
     }
 
     public void initView() {
+        //第一步：获取ViewPager实例
         mViewPage = findViewById(R.id.viewpage);
         // 实例化布局
         mTabHome = findViewById(R.id.tab_home_layout);
@@ -88,7 +84,7 @@ public class MainActivity extends BaseActivity {
         homebtn.setImageResource(R.mipmap.analysis_true);
 
         //初始化事件监听方法
-        onClickListener = new View.OnClickListener(){
+        onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int currentIndex = 0;
@@ -114,7 +110,6 @@ public class MainActivity extends BaseActivity {
 
     public void initData() {
         mfragment = new ArrayList<>();
-
     }
 
     private void resetImgs() {
@@ -198,7 +193,7 @@ public class MainActivity extends BaseActivity {
         initEvent();
     }
 
-    private void initEvent(){
+    private void initEvent() {
         mTabHome.setOnClickListener(onClickListener);
         mTabList.setOnClickListener(onClickListener);
         mGwc.setOnClickListener(onClickListener);
